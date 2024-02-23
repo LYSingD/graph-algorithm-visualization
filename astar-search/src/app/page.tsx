@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-full border-4 border-blue-400">
+      <div className="w-full h-full ">
         <Maze />
       </div>
 

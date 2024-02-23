@@ -1,20 +1,28 @@
-function initializeMaze() {
-    const row = 50, col = 50
-    return {
-        row: row,
-        col: col,
-        cells: Array(row).fill(Array(col).fill("empty"))
-    }
-}
+import { initializeMaze } from "@/app/utils/maze"
+
+import clsx from "clsx"
 
 export default function Maze() {
     const maze = initializeMaze()
     return (
-        maze.cells.map((row: any, rowIndex: any) => (
-            <div key={`rol-${rowIndex}`} className="w-full grid grid-cols-50">
+        maze.tiles.map((row: any, rowIndex: any) => (
+            <div 
+                id={`rol-${rowIndex}`} 
+                key={`rol-${rowIndex}`} 
+                className="w-full flex flex-row justify-center items-center">
                 {row.map((col: any, colIndex: any) => (
-                    <div key={`${rowIndex}-${colIndex}`} className="border-t border-r border-t-red-500 border-red-500">
-                        HI
+                    <div 
+                        id={`${rowIndex}-${colIndex}`}
+                        key={`${rowIndex}-${colIndex}`} 
+                        className={clsx(
+                            "w-6 h-6 border-t border-r border-t-red-500 border-red-500 bg-white",
+                            {
+                                "border-l border-l-red-500": colIndex === 0,
+                                "border-b border-b-red-500": rowIndex === maze.row - 1
+                            }
+                        )}
+                    >
+                        H
                     </div>
                 ))}
             </div>
